@@ -339,19 +339,7 @@ line as a type signature."
         (origin (buffer-name)))
     (help-setup-xref (list #'intero-call-in-buffer origin-buffer 'intero-info ident)
                      (called-interactively-p 'interactive))
-    (save-excursion
-      (let ((help-xref-following nil))
-        (with-help-window (help-buffer)
-          (with-current-buffer (help-buffer)
-            (insert
-             (intero-fontify-expression ident)
-             " in `"
-             origin
-             "'"
-             " (" package ")"
-             "\n\n"
-             (intero-fontify-expression info))
-            (goto-char (point-min))))))))
+    (message (intero-fontify-expression info))))
 
 (defun intero-goto-definition ()
   "Jump to the definition of the thing at point.

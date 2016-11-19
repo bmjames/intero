@@ -1920,6 +1920,7 @@ You can always run M-x intero-restart to make it try again.
                (state (nth 0 next-callback))
                (func (nth 1 next-callback)))
           (let ((string (intero-strip-carriage-returns (buffer-substring (point-min) (1- (point))))))
+            (unless (string-match "<no location info>" string)
             (if next-callback
                 (progn (with-temp-buffer
                          (funcall func state string))
@@ -1927,6 +1928,7 @@ You can always run M-x intero-restart to make it try again.
               (when intero-debug
                 (intero--warn "Received output but no callback in `intero-callbacks': %S"
                               string)))))
+	    )
         (delete-region (point-min) (point))))))
 
 (defun intero-strip-carriage-returns (string)

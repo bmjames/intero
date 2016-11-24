@@ -1080,6 +1080,7 @@ If PROMPT-OPTIONS is non-nil, prompt with an options list."
               (insert ":set prompt \"\"
 :set -fbyte-code
 :set prompt \"\\4 \"
+:set prompt2 \"… \"
 ")
               (basic-save-buffer)
               (current-buffer)))
